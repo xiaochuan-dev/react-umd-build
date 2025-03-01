@@ -45,6 +45,9 @@ jobs:
           node mybuild/build.js
           ls -R dist
 
+          cd ..
+          cp -r ./react/dist ./
+
       - name: publish
         if: ${{ steps.check.outputs.output != '' }}
         run: |
