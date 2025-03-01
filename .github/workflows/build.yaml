@@ -29,15 +29,15 @@ jobs:
           git remote add github https://github.com/facebook/react.git
           git fetch github
           git rebase github/main
-          git tag
+          git log
 
           yarn
           node mybuild/build.js
           ls -R dist
 
-      - name: publish
-        run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-          yarn publish --non-interactive
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      # - name: publish
+      #   run: |
+      #     echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+      #     yarn publish --non-interactive
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
