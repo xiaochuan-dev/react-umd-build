@@ -1,7 +1,8 @@
 import { JSDOM } from 'jsdom';
+import { resolve } from 'path';
 
 describe('test html', () => {
-  it('test react', () => {
+  it('test react', async () => {
     const dom = new JSDOM(
       `<!doctype html>
 <html lang="en">
@@ -9,8 +10,8 @@ describe('test html', () => {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Document</title>
-    <script src="http://localhost:5000/react.production.js"></script>
-    <script src="http://localhost:5000/react-dom.production.js"></script>
+    <script src="file://${resolve(__dirname, '../dist/react.production.js')}"></script>
+    <script src="file://${resolve(__dirname, '../dist/react-dom.production.js')}"></script>
   </head>
   <body>
     <div id="app"></div>
@@ -26,6 +27,13 @@ describe('test html', () => {
         url: 'https://test.com',
       }
     );
+
+    await new Promise((resolve) => {
+      dom.window.addEventListener('load', () => {
+        resolve();
+      });
+    });
+
     const { window } = dom;
     const { document } = window;
     const app = document.querySelector('.app');
