@@ -21,7 +21,7 @@ jobs:
         run: git clone https://github.com/freexiaochuan/react.git
       
       - run: ls react
-      - name: Patch
+      - name: Build
         run: |
           cd react
           git config --global user.name "GitHub Actions"
@@ -29,6 +29,7 @@ jobs:
           git remote add github https://github.com/facebook/react.git
           git fetch github
           git rebase github/
+          yarn
           node mybuild/build.js
           ls -R dist
 
