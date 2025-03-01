@@ -1,4 +1,5 @@
 const { writeFile } = require('node:fs/promises');
+const semver = require('semver');
 
 async function getReactLatest() {
   const url = 'https://registry.npmjs.org/react/latest';
@@ -21,8 +22,16 @@ async function start() {
   const preBuildVersion = await getPreBuild();
   if (latestReactVersion !== preBuildVersion) {
     const curPkg = require('./package.json');
-    curPkg.build = latestReactVersion;
-    await writeFile('./package.json', JSON.stringify(curPkg), 'utf-8');
+
+    const newVersion = semver.inc(curPkg.version, 'patch');
+
+    const newPkg = {
+      ...curPkg,
+      build: latestReactVersion,
+      version: newVersion
+    };
+
+    await writeFile('./package.json', JSON.stringify(newPkg), 'utf-8');
     console.log(`v${latestReactVersion}`);
   }
 }
