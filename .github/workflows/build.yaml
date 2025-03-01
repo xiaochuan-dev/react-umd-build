@@ -24,7 +24,7 @@ jobs:
       - name: Patch
         run: |
           cd react
-          git apply ../patches/react19.patch
+          git apply --whitespace=fix ../patches/react19.patch
 
       - name: publish
         run: yarn publish --non-interactive
