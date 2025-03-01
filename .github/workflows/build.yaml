@@ -39,7 +39,7 @@ jobs:
           git remote add github https://github.com/facebook/react.git
           git fetch --quiet github
           git rebase --quiet ${{ steps.check.outputs.output }}
-          git log
+          git log -1
 
           yarn
           node mybuild/build.js
