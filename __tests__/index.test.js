@@ -24,12 +24,18 @@ describe('test html', () => {
       {
         resources: 'usable',
         runScripts: 'dangerously',
-        url: 'https://test.com',
+        url: 'file://test',
       }
     );
 
     await new Promise((resolve) => {
       dom.window.addEventListener('load', () => {
+        resolve();
+      });
+    });
+
+    await new Promise((resolve) => {
+      dom.window.document.addEventListener('DOMContentLoaded', () => {
         resolve();
       });
     });
