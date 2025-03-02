@@ -68,6 +68,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
-      - name: Test
+      - name: Test Umd
         run: |
+          cp -r ./dist/* ./fixtures/umd/
+          yarn serve -C -p 5000 ./fixtures/umd > /dev/null 2>&1 &
           yarn test
