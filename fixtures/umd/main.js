@@ -1,0 +1,2 @@
+(()=>{"use strict";var e={n:t=>{var r=t&&t.__esModule?()=>t.default:()=>t;return e.d(r,{a:r}),r},d:(t,r)=>{for(var a in r)e.o(r,a)&&!e.o(t,a)&&Object.defineProperty(t,a,{enumerable:!0,get:r[a]})},o:(e,t)=>Object.prototype.hasOwnProperty.call(e,t)};const t=ReactDOM,r=React;var a=e.n(r);const n=a().createElement((function(){return a().createElement("div",{className:"app"},a().createElement("div",null,"hello world"))}),null);(0,t.createRoot)(document.querySelector("#app")).render(n)})();
+//# sourceMappingURL=main.js.map

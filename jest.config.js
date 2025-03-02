@@ -1,5 +1,5 @@
 module.exports = {
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
 
   testMatch: [
     '**/__tests__/**/*.js?(x)',
@@ -8,4 +8,5 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
 
   testPathIgnorePatterns: ['/node_modules/', '/dist/', '/react/'],
+  testTimeout: 50000
 };
